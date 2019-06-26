@@ -50,6 +50,6 @@
         </items>
       </SplitPane>
       <HBox layoutX="170.0" layoutY="286.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Button layoutX="524.0" layoutY="301.0" mnemonicParsing="false" text="Button" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="524.0" layoutY="301.0" mnemonicParsing="false" text="Convert" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="14.0" />
    </children>
 </AnchorPane>
