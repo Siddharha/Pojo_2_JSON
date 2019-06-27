@@ -1,19 +1,23 @@
 package sample;
 
-import javax.tools.*;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class AppUtil {
 
-    void generateObj() throws Exception {
+    String JsonFromPojo(String strClass){
+        String[] stringLines = strClass.split("\\R", 3);
 
+        String className = checkNameAfterAndBefore(stringLines[0],"class","{");
+        String veriableNameList = checkNameAfterAndBefore(stringLines[1],"String",";");
+        return veriableNameList;
+    }
+
+    private String checkNameAfterAndBefore(String strFLine, String afterWords, String beforeWords){
+        System.out.println(strFLine.lastIndexOf(afterWords) + afterWords.length()+1);
+        return strFLine.substring(strFLine.lastIndexOf(afterWords) + afterWords.length()+1,strFLine.lastIndexOf(beforeWords)).trim();
+    }
+
+    private String checkNameAfterAndBefore(String strFLine, String afterWords){
+        System.out.println(strFLine.lastIndexOf(afterWords) + afterWords.length()+1);
+        return strFLine.substring(strFLine.lastIndexOf(afterWords) + afterWords.length()+1).trim();
     }
 }
 

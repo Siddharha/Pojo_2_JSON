@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     private int INP_TYPE;
+    private AppUtil appUtil;
 
     @FXML
     TextArea etPojo;
@@ -31,7 +32,7 @@ public class Controller implements Initializable {
     private void onActionPerform() {
         btnConvert.setOnAction(e -> {
             if(INP_TYPE == 0){
-            etJson.setText(etPojo.getText());
+            etJson.setText(appUtil.JsonFromPojo(etPojo.getText()));
             }
 
             if(INP_TYPE ==1){
@@ -62,6 +63,6 @@ public class Controller implements Initializable {
 
     private void initView() {
         INP_TYPE = 0;
-
+        appUtil = new AppUtil();
     }
 }
