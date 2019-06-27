@@ -62,5 +62,6 @@ public class Controller implements Initializable {
 
     private void initView() {
         INP_TYPE = 0;
+
     }
 }
