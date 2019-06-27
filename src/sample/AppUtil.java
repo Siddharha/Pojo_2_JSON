@@ -2,22 +2,21 @@ package sample;
 
 public class AppUtil {
 
-    String JsonFromPojo(String strClass){
-        String[] stringLines = strClass.split("\\R", 3);
+   /* String JsonFromPojo(String strClass){
+        GenerationConfig config = new DefaultGenerationConfig() {
+            @Override
+            public boolean isGenerateBuilders() { // set config option by overriding method
+                return true;
+            }
+        };
 
-        String className = checkNameAfterAndBefore(stringLines[0],"class","{");
-        String veriableNameList = checkNameAfterAndBefore(stringLines[1],"String",";");
+        SchemaMapper mapper = new SchemaMapper(new RuleFactory(config, new Jackson2Annotator(config), new SchemaStore()), new SchemaGenerator());
+        mapper.generate(codeModel, "ClassName", "com.example", source);
+
+        codeModel.build(Files.createTempDirectory("required").toFile());
         return veriableNameList;
-    }
+    }*/
 
-    private String checkNameAfterAndBefore(String strFLine, String afterWords, String beforeWords){
-        System.out.println(strFLine.lastIndexOf(afterWords) + afterWords.length()+1);
-        return strFLine.substring(strFLine.lastIndexOf(afterWords) + afterWords.length()+1,strFLine.lastIndexOf(beforeWords)).trim();
-    }
 
-    private String checkNameAfterAndBefore(String strFLine, String afterWords){
-        System.out.println(strFLine.lastIndexOf(afterWords) + afterWords.length()+1);
-        return strFLine.substring(strFLine.lastIndexOf(afterWords) + afterWords.length()+1).trim();
-    }
 }
 

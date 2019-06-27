@@ -1,5 +1,6 @@
 package sample;
 
+import com.google.gson.Gson;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -8,16 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-
-import javax.tools.JavaCompiler;
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
     private int INP_TYPE;
-    private AppUtil appUtil;
 
     @FXML
     TextArea etPojo;
@@ -32,11 +29,13 @@ public class Controller implements Initializable {
     private void onActionPerform() {
         btnConvert.setOnAction(e -> {
             if(INP_TYPE == 0){
-            etJson.setText(appUtil.JsonFromPojo(etPojo.getText()));
+                String s =new Gson().toJson(etPojo.getText());
+            etJson.setText(/*etPojo.getText()*/s);
             }
 
             if(INP_TYPE ==1){
-                etPojo.setText(etJson.getText());
+                Object o =new Gson().fromJson(etJson.getText(), Object.class);
+                etPojo.setText(/*etJson.getText()*/o.toString());
             }
         });
 
@@ -63,6 +62,5 @@ public class Controller implements Initializable {
 
     private void initView() {
         INP_TYPE = 0;
-        appUtil = new AppUtil();
     }
 }
