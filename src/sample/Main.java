@@ -21,10 +21,5 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        try {
-            new AppUtil().generateObj();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
