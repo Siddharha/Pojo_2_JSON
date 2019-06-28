@@ -9,11 +9,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
+    private AppUtil appUtil;
     private int INP_TYPE;
 
     @FXML
@@ -29,8 +33,16 @@ public class Controller implements Initializable {
     private void onActionPerform() {
         btnConvert.setOnAction(e -> {
             if(INP_TYPE == 0){
-                String s =new Gson().toJson(etPojo.getText());
-            etJson.setText(/*etPojo.getText()*/s);
+               // String s =new Gson().toJson(etPojo.getText());
+
+                try {
+                    G obj =(G)appUtil.createDynamicObj(etPojo.getText());
+
+                    etJson.setText(new Gson().toJson(obj));
+                } catch (IOException | NoSuchMethodException | InvocationTargetException ex) {
+                    ex.printStackTrace();
+                }
+
             }
 
             if(INP_TYPE ==1){
@@ -62,5 +74,6 @@ public class Controller implements Initializable {
 
     private void initView() {
         INP_TYPE = 0;
+        appUtil = new AppUtil();
     }
 }
